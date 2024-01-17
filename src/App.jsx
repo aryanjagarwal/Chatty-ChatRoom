@@ -7,8 +7,10 @@ function App() {
   return (
     <>
     <Navbar/>
-    {/* <Login/> */}
-    <ChatRoom/>
+    <Routes>
+      <Route path="/" element={<Login />}/>
+      <Route path="/chat" element={<ChatRoom />}/>
+    </Routes>
     </>
   )
 }
