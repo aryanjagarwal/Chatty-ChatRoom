@@ -1,13 +1,23 @@
-import React from 'react'
+import { UserAuth } from "../context/AuthContext"
 
-function Navbar() {
-    return (
-   <div className='navbar bg-neutral text-neutral-content'>
-    <div className='containerWrap flex justify-between'>
-        <a className='btn btn-ghost normal-case text-xl'>Chatty</a>
-        <button>Logout</button>
+const Navbar = () => {
+  const { currentUser, logout } = UserAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
+  return (
+    <div className="navbar fixed z-10 bg-neutral text-neutral-content">
+      <div className="containerWrap flex justify-between">
+        <a className="btn btn-ghost normal-case text-xl">instantChat</a>
+        {currentUser ? <button onClick={handleLogout}>Logout</button> : ""}
+      </div>
     </div>
-   </div>
   )
 }
 
